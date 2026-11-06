@@ -1,0 +1,395 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cinzel+Decorative:wght@400;700&family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:ital,wght@0,300;0,400;0,500;1,400&family=Pinyon+Script&family=Great+Vibes&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-vintage-cream: #F3E9D5;
+  --color-vintage-paper: #E8D8BC;
+  --color-vintage-ivory: #FAF4E7;
+  
+  --color-vintage-burgundy: #681F2B;
+  --color-vintage-wine: #7D3942;
+  --color-vintage-rose: #B98B82;
+  --color-vintage-sage: #7B8067;
+  
+  --color-vintage-gold: #B79A63;
+  --color-vintage-text: #3C2B25;
+
+  --font-serif: "Cormorant Garamond", serif;
+  --font-display: "Playfair Display", serif;
+  --font-sans: "Montserrat", sans-serif;
+  --font-script: "Pinyon Script", cursive;
+
+  /* Royal blue · gold · ivory theme */
+  --color-royal-night: #050f33;
+  --color-royal-deep: #0a1d5c;
+  --color-royal: #0f2a7a;
+  --color-royal-bright: #2346a8;
+  --color-gold: #c9a45c;
+  --color-gold-light: #ecd29a;
+  --color-gold-deep: #9a7432;
+  --color-ivory: #f8f2e3;
+  --color-ivory-deep: #ece1c4;
+
+  --font-cinzel: "Cinzel", "Playfair Display", Georgia, serif;
+  --font-cormorant: "Cormorant Garamond", Georgia, serif;
+  --font-vibes: "Alex Brush", "Great Vibes", cursive;
+  --font-deco: "Cinzel Decorative", "Cinzel", Georgia, serif;
+  --font-greatvibes: "Great Vibes", "Alex Brush", cursive;
+}
+
+:root {
+  background-color: var(--color-ivory);
+  color: var(--color-royal-deep);
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  min-height: 100vh;
+  width: 100%;
+  background-color: var(--color-ivory);
+}
+
+.writing-mode-vertical {
+  writing-mode: vertical-rl;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-ivory);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-gold-deep);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold);
+}
+
+.bg-texture-paper {
+  background-color: var(--color-vintage-cream);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+  box-shadow: inset 0 0 100px rgba(60, 43, 37, 0.05); /* Soft vignette */
+}
+
+.vintage-border {
+  border: 1px solid var(--color-vintage-gold);
+  position: relative;
+}
+.vintage-border::before {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border: 1px solid rgba(183, 154, 99, 0.4);
+  pointer-events: none;
+}
+
+.vintage-corners {
+}
+.vintage-corners::before,
+.vintage-corners::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border: 1px solid var(--color-vintage-gold);
+}
+.vintage-corners::before {
+  top: -4px;
+  left: -4px;
+  border-right: none;
+  border-bottom: none;
+}
+.vintage-corners::after {
+  bottom: -4px;
+  right: -4px;
+  border-left: none;
+  border-top: none;
+}
+.vintage-corners-inner::before,
+.vintage-corners-inner::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border: 1px solid var(--color-vintage-gold);
+}
+.vintage-corners-inner::before {
+  top: -4px;
+  right: -4px;
+  border-left: none;
+  border-bottom: none;
+}
+.vintage-corners-inner::after {
+  bottom: -4px;
+  left: -4px;
+  border-right: none;
+  border-top: none;
+}
+
+.text-shadow-vintage {
+  text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+}
+
+/* ---------- Royal blue · gold · ivory theme ---------- */
+
+/* Gold lattice used on the backdrop and the envelope liner */
+.royal-damask {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%23c9a45c' stroke-width='0.8'%3E%3Cpath d='M32 0 L64 32 L32 64 L0 32 Z'/%3E%3Cpath d='M32 22 C 36 26 36 38 32 42 C 28 38 28 26 32 22 Z'/%3E%3Cpath d='M22 32 C 26 28 38 28 42 32 C 38 36 26 36 22 32 Z'/%3E%3Ccircle cx='32' cy='32' r='2'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 64px 64px;
+}
+
+.royal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 42%, #fffdf6 0%, #fbf3df 45%, #f1e2bd 80%, #e6d09e 100%);
+}
+.royal-backdrop .royal-damask {
+  position: absolute;
+  inset: 0;
+  opacity: 0.09;
+}
+
+.gold-foil {
+  color: var(--color-gold-deep);
+  background-image: linear-gradient(180deg, #d4ae62 0%, #b48a3c 45%, #8c6224 75%, #6e4a17 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-foil-light {
+  color: var(--color-gold);
+  background-image: linear-gradient(180deg, #f6e2a8 0%, #dcb766 40%, #b98a3a 70%, #8c6224 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.royal-glass {
+  background: linear-gradient(180deg, #1b3fa3 0%, #0f2a7a 55%, #0a1d5c 100%);
+  border: 1px solid rgba(201, 164, 92, 0.7);
+  box-shadow: 0 20px 40px rgba(10, 29, 92, 0.28), inset 0 1px 0 rgba(236, 210, 154, 0.2);
+  color: var(--color-ivory);
+}
+
+.ivory-paper {
+  background-color: #fffcf5;
+  background-image:
+    radial-gradient(ellipse at center, rgba(255, 255, 255, 0.6) 0%, transparent 70%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+  color: var(--color-royal-deep);
+}
+
+.gold-button {
+  background: linear-gradient(180deg, #f0d697 0%, #c9a45c 100%);
+  color: var(--color-royal-night);
+  border: 1px solid rgba(255, 240, 200, 0.6);
+  box-shadow: 0 8px 22px rgba(2, 8, 30, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+}
+.gold-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+  box-shadow: 0 12px 28px rgba(2, 8, 30, 0.5);
+}
+
+@keyframes seal-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.55; }
+  50% { transform: scale(1.18); opacity: 0.9; }
+}
+.seal-glow {
+  animation: seal-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0; transform: scale(0.6); }
+  50% { opacity: 1; transform: scale(1); }
+}
+.twinkle {
+  animation: twinkle 4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .seal-glow, .twinkle { animation: none; }
+}
+
+/* Golden-seal style pieces in royal blue */
+.royal-card {
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 0%, rgba(60, 100, 210, 0.45) 0%, transparent 70%),
+    linear-gradient(180deg, #1a3c9e 0%, #0f2a7a 50%, #0a1d5c 100%);
+  border: 1px solid rgba(201, 164, 92, 0.55);
+  box-shadow: 0 30px 60px rgba(10, 29, 92, 0.3);
+}
+
+.royal-pill {
+  background: linear-gradient(135deg, #2346a8 0%, #0f2a7a 55%, #0a1d5c 100%);
+  border: 1px solid rgba(201, 164, 92, 0.6);
+  box-shadow: 0 12px 26px rgba(10, 29, 92, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+}
+.royal-pill:hover:not(:disabled) {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+html {
+  scroll-padding-top: 64px;
+}
+
+/* ---------- Shivika & Gaveen invitation ---------- */
+
+/* Side of the square card inside the envelope; keep in sync with envelopeSide() in App.tsx. */
+:root {
+  --S: min(42vw, 34vh, 300px);
+}
+
+.font-greatvibes {
+  font-family: var(--font-greatvibes);
+}
+
+.gold-script {
+  color: #b38a2c;
+  background-image: linear-gradient(175deg, #d9b45a 0%, #b88a2a 40%, #e2c46e 60%, #9c7420 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.invite-card {
+  background-color: #fffdf0;
+  background-image:
+    radial-gradient(ellipse at 50% 40%, rgba(255, 255, 255, 0.7) 0%, transparent 70%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+}
+
+.gold-pill {
+  background: linear-gradient(180deg, #fff6d8 0%, #f3dc9a 55%, #e2bf66 100%);
+  border: 1px solid rgba(166, 124, 34, 0.55);
+  box-shadow: 0 8px 18px rgba(120, 86, 20, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+}
+.gold-pill:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.04);
+  box-shadow: 0 12px 24px rgba(120, 86, 20, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+@keyframes card-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+.card-float > .relative {
+  animation: card-float 7s ease-in-out 1.6s infinite;
+}
+
+/* Petals: fall (outer), sway sideways (middle), tumble in 3D (inner) */
+@keyframes petal-fall {
+  0% { transform: translateY(-12vh); opacity: 0; }
+  8% { opacity: 0.95; }
+  90% { opacity: 0.95; }
+  100% { transform: translateY(112vh); opacity: 0; }
+}
+@keyframes petal-sway {
+  0%, 100% { transform: translateX(calc(var(--sway-x) * -0.5)) rotate(-18deg); }
+  50% { transform: translateX(calc(var(--sway-x) * 0.5)) rotate(18deg); }
+}
+@keyframes petal-spin {
+  to { transform: rotate3d(1, 0.6, 0.2, 360deg); }
+}
+.petal-fall {
+  animation-name: petal-fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+  will-change: transform;
+}
+.petal-sway {
+  animation: petal-sway ease-in-out infinite;
+}
+.petal-spin {
+  animation: petal-spin linear infinite;
+}
+
+/* Butterflies: wings fold toward the body; the whole body bobs gently */
+@keyframes wing-flap {
+  from { transform: scaleX(1); }
+  to { transform: scaleX(0.22); }
+}
+.butterfly-wing {
+  animation: wing-flap ease-in-out infinite alternate;
+}
+@keyframes butterfly-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+.butterfly-bob {
+  animation: butterfly-bob 0.9s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card-float > .relative { animation: none; }
+}
+
+/* ---------- Extra polish ---------- */
+
+/* Gold-leaf border with a light catching along it */
+.gilded-frame {
+  border: 0.35cqw solid transparent;
+  border-image: linear-gradient(135deg, #f6dc86, #b8861f 25%, #fbe9a8 50%, #a8770f 75%, #ecc95c) 1;
+}
+
+/* Gold script that slowly glints */
+.gold-shimmer {
+  background-image: linear-gradient(110deg, #9c7420 0%, #c39a3c 30%, #ecd081 45%, #c39a3c 60%, #8f6a1c 100%);
+  background-size: 250% 100%;
+  animation: gold-glint 6s ease-in-out infinite;
+}
+@keyframes gold-glint {
+  0%, 100% { background-position: 100% 0; }
+  50% { background-position: 0% 0; }
+}
+
+/* A soft band of light sweeping across the card */
+.card-shine {
+  background: linear-gradient(115deg, transparent 35%, rgba(255, 248, 220, 0.55) 48%, rgba(255, 255, 255, 0.75) 50%, rgba(255, 248, 220, 0.55) 52%, transparent 65%);
+  background-size: 300% 100%;
+  background-repeat: no-repeat;
+  mix-blend-mode: soft-light;
+  animation: card-shine 9s ease-in-out 1.4s infinite;
+  background-position: 150% 0;
+}
+@keyframes card-shine {
+  0% { background-position: 150% 0; }
+  22%, 100% { background-position: -50% 0; }
+}
+
+.halo-spin {
+  animation: halo-spin 120s linear infinite;
+}
+@keyframes halo-spin {
+  to { transform: rotate(360deg); }
+}
+
+.intro-glow {
+  background: radial-gradient(closest-side, rgba(255, 236, 170, 0.55), rgba(255, 236, 170, 0.18) 55%, transparent);
+  animation: intro-breathe 5s ease-in-out infinite;
+}
+@keyframes intro-breathe {
+  0%, 100% { opacity: 0.7; transform: translate(-50%, -50%) scale(0.96); }
+  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.04); }
+}
+
+.hint-pulse {
+  animation: hint-pulse 2.8s ease-in-out infinite;
+}
+@keyframes hint-pulse {
+  0%, 100% { letter-spacing: 0.45em; }
+  50% { letter-spacing: 0.55em; }
+}
